@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Guns N Guitars - Paradise City Store</title>
+  <title>Seattle Underground Guitars - 90s Grunge Store</title>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Rye&family=Montserrat:wght@500;700;900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Courier+Prime:wght@400;700&display=swap');
 
     :root {
-      --gnr-gold: #ffcc00;
-      --gnr-gold-glow: rgba(255, 204, 0, 0.4);
-      --gnr-red: #e60026;
-      --gnr-red-glow: rgba(230, 0, 38, 0.5);
-      --gnr-dark: #0b0a0d;
-      --gnr-card: rgba(22, 19, 28, 0.9);
-      --green-matrix: #00ff87;
-      --text-light: #f3f4f6;
-      --text-muted: #a1a1aa;
+      --grunge-bg: #121110;
+      --grunge-paper: #1c1a17;
+      --flannel-red: #8b0000;
+      --flannel-dark-red: #5c0000;
+      --faded-yellow: #d4a359;
+      --dirty-white: #e0d8c3;
+      --text-muted: #8c8577;
+      --rust: #a34828;
     }
 
     * {
@@ -26,14 +25,12 @@
     }
 
     body {
-      background-color: var(--gnr-dark);
+      background-color: var(--grunge-bg);
       background-image: 
-        radial-gradient(circle at 50% 20%, rgba(230, 0, 38, 0.15) 0%, transparent 60%),
-        radial-gradient(circle at 50% 80%, rgba(255, 204, 0, 0.08) 0%, transparent 50%),
-        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 100% 20px;
-      color: var(--text-light);
-      font-family: 'Montserrat', sans-serif;
+        radial-gradient(circle at 50% 50%, rgba(139, 0, 0, 0.15) 0%, transparent 80%),
+        repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, rgba(0,0,0,0.15) 1px, transparent 1px, transparent 2px);
+      color: var(--dirty-white);
+      font-family: 'Courier Prime', monospace;
       min-height: 100vh;
     }
 
@@ -41,313 +38,360 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 8%;
-      background: rgba(11, 10, 13, 0.95);
-      backdrop-filter: blur(10px);
+      padding: 20px 6%;
+      background: #0a0908;
+      border-bottom: 4px dashed var(--faded-yellow);
       position: sticky;
       top: 0;
       z-index: 100;
-      border-bottom: 2px solid var(--gnr-gold);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
     }
 
     .logo {
-      font-family: 'Rye', serif;
+      font-family: 'Special Elite', cursive;
       font-size: 1.8rem;
-      color: var(--gnr-gold);
-      text-shadow: 0 0 10px var(--gnr-gold-glow), 2px 2px 0px #000;
-      letter-spacing: 1px;
+      color: var(--dirty-white);
+      text-transform: uppercase;
+      background: var(--flannel-red);
+      padding: 5px 12px;
+      transform: rotate(-2deg);
+      border: 2px solid #000;
+      box-shadow: 4px 4px 0px #000;
     }
 
     .logo span {
-      color: var(--gnr-red);
-      text-shadow: 0 0 10px var(--gnr-red-glow), 2px 2px 0px #000;
+      color: var(--faded-yellow);
     }
 
     nav a {
-      color: var(--text-muted);
+      color: var(--dirty-white);
       text-decoration: none;
-      margin-left: 25px;
+      margin-left: 20px;
       font-weight: 700;
       text-transform: uppercase;
-      font-size: 0.85rem;
-      letter-spacing: 2px;
-      transition: color 0.3s ease;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      background: #1a1815;
+      padding: 6px 10px;
+      border: 1px solid #333;
+      transition: all 0.2s ease;
     }
 
-    nav a:hover {
-      color: var(--gnr-gold);
+    nav a:hover, nav a.active {
+      background: var(--faded-yellow);
+      color: #000;
+      transform: rotate(1deg);
     }
 
-    .btn-nav {
-      border: 1.5px solid var(--gnr-gold);
-      padding: 8px 18px;
-      border-radius: 4px;
-      color: var(--gnr-gold) !important;
-      box-shadow: 0 0 10px var(--gnr-gold-glow);
-      transition: all 0.3s ease !important;
-      background: rgba(255, 204, 0, 0.05);
-    }
-
-    .btn-nav:hover {
-      background: var(--gnr-gold);
-      color: #000 !important;
-      box-shadow: 0 0 20px var(--gnr-gold);
-    }
-
-    .hero {
+    .hero-banner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
       text-align: center;
-      padding: 60px 20px 30px;
+      padding: 80px 20px 60px;
+      border-bottom: 2px solid #222;
+      position: relative;
     }
 
-    .badge-hero {
-      background: rgba(0, 255, 135, 0.1);
-      border: 1px solid var(--green-matrix);
-      color: var(--green-matrix);
-      padding: 6px 16px;
-      border-radius: 50px;
-      font-size: 0.85rem;
-      font-weight: 800;
+    .tape-badge {
+      background: #c2b59b;
+      color: #111;
+      font-family: 'Special Elite', cursive;
+      padding: 6px 20px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      transform: rotate(-3deg);
+      margin-bottom: 25px;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+    }
+
+    .hero-banner h1 {
+      font-family: 'Special Elite', cursive;
+      font-size: 3.8rem;
+      color: var(--dirty-white);
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      line-height: 1.1;
+      text-shadow: 3px 3px 0px var(--flannel-dark-red);
+    }
+
+    .hero-banner p {
+      color: var(--text-muted);
+      max-width: 650px;
+      font-size: 1.1rem;
+      line-height: 1.5;
+      margin-bottom: 35px;
+      background: rgba(0,0,0,0.5);
+      padding: 15px;
+      border: 1px solid #2a2723;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn-grunge {
+      background: var(--flannel-red);
+      color: var(--dirty-white);
+      font-family: 'Special Elite', cursive;
+      font-size: 1.1rem;
+      padding: 12px 25px;
+      text-decoration: none;
+      text-transform: uppercase;
+      border: 2px solid #000;
+      box-shadow: 5px 5px 0px #000;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .btn-grunge:hover {
+      background: var(--faded-yellow);
+      color: #000;
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0px #000;
+    }
+
+    .btn-secondary {
+      background: #24211d;
+      color: var(--dirty-white);
+      border: 2px solid var(--text-muted);
+    }
+
+    .section-title {
+      text-align: center;
+      font-family: 'Special Elite', cursive;
+      font-size: 2.5rem;
+      color: var(--faded-yellow);
+      margin: 60px 0 40px;
       text-transform: uppercase;
       letter-spacing: 2px;
-      box-shadow: 0 0 12px rgba(0, 255, 135, 0.3);
-    }
-
-    .hero h1 {
-      font-family: 'Rye', serif;
-      font-size: 3.2rem;
-      margin: 25px 0 15px;
-      color: #ffffff;
-      text-shadow: 
-        0 0 20px var(--gnr-red-glow),
-        3px 3px 0px #000;
-      letter-spacing: 1px;
-    }
-
-    .hero p {
-      color: var(--text-muted);
-      max-width: 580px;
-      margin: 0 auto;
-      font-size: 1.1rem;
-      font-weight: 500;
+      text-shadow: 2px 2px 0px #000;
     }
 
     .catalog {
       display: flex;
       justify-content: center;
-      gap: 35px;
+      gap: 30px;
       flex-wrap: wrap;
-      padding: 40px 20px 80px;
+      padding: 0 20px 80px;
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
     .guitar-card {
+      background: var(--grunge-paper);
+      border: 3px solid #000;
+      width: 320px;
+      padding: 15px;
+      box-shadow: 8px 8px 0px #000;
       position: relative;
-      background: var(--gnr-card);
-      border: 1px solid rgba(255, 204, 0, 0.3);
-      border-radius: 12px;
-      width: 330px;
-      overflow: hidden;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+      transition: transform 0.2s ease;
+    }
+
+    .guitar-card:nth-child(odd) {
+      transform: rotate(-1deg);
+    }
+
+    .guitar-card:nth-child(even) {
+      transform: rotate(1deg);
     }
 
     .guitar-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--gnr-gold);
-      box-shadow: 
-        0 0 25px var(--gnr-gold-glow),
-        0 20px 40px rgba(0, 0, 0, 0.95);
+      transform: scale(1.02) rotate(0deg);
+      z-index: 10;
     }
 
     .card-image {
       position: relative;
       height: 220px;
+      border: 2px solid #000;
       overflow: hidden;
-      border-bottom: 2px solid var(--gnr-red);
+      background: #000;
     }
 
     .card-image img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.5s ease;
-      filter: contrast(1.05) brightness(0.9);
+      filter: sepia(0.3) contrast(1.2) grayscale(0.2);
+      transition: filter 0.3s ease;
     }
 
     .guitar-card:hover .card-image img {
-      transform: scale(1.08);
-      filter: contrast(1.1) brightness(1);
+      filter: sepia(0) contrast(1) grayscale(0);
     }
 
     .tag-category {
       position: absolute;
-      top: 15px;
-      right: 15px;
-      background: rgba(11, 10, 13, 0.85);
-      border: 1px solid var(--gnr-gold);
-      color: var(--gnr-gold);
-      padding: 4px 12px;
-      border-radius: 4px;
+      top: 10px;
+      left: 10px;
+      background: #000;
+      color: var(--faded-yellow);
+      font-family: 'Special Elite', cursive;
+      padding: 3px 8px;
       font-size: 0.75rem;
-      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      border: 1px solid var(--faded-yellow);
     }
 
     .card-content {
-      padding: 24px;
+      padding: 15px 5px 5px;
     }
 
     .card-content h3 {
-      font-family: 'Rye', serif;
-      font-size: 1.6rem;
-      color: #fff;
-      margin-bottom: 8px;
-      letter-spacing: 0.5px;
+      font-family: 'Special Elite', cursive;
+      font-size: 1.5rem;
+      color: var(--dirty-white);
+      margin-bottom: 10px;
+      border-bottom: 1px dashed #444;
+      padding-bottom: 5px;
     }
 
     .description {
       color: var(--text-muted);
-      font-size: 0.9rem;
-      line-height: 1.5;
-      margin-bottom: 20px;
+      font-size: 0.85rem;
+      line-height: 1.4;
+      margin-bottom: 15px;
     }
 
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 15px;
-      margin-bottom: 15px;
+      margin-top: 15px;
+      padding-top: 10px;
+      border-top: 2px solid #000;
     }
 
     .price {
-      font-family: 'Rye', serif;
-      font-size: 1.5rem;
-      color: var(--gnr-gold);
-      text-shadow: 0 0 10px var(--gnr-gold-glow);
+      font-family: 'Special Elite', cursive;
+      font-size: 1.4rem;
+      color: var(--faded-yellow);
     }
 
-    .btn-buy {
-      background: linear-gradient(135deg, var(--gnr-red), #99001a);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #fff;
-      font-weight: 800;
-      padding: 10px 18px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 0 12px var(--gnr-red-glow);
+    .badge-condition {
+      display: inline-block;
+      margin-top: 10px;
+      background: #2a0808;
+      color: #ff6b6b;
+      border: 1px solid #5e1414;
+      padding: 4px 8px;
+      font-size: 0.75rem;
       text-transform: uppercase;
+      font-weight: bold;
+    }
+
+    footer {
+      background: #050505;
+      border-top: 4px solid var(--flannel-red);
+      padding: 40px 20px;
+      text-align: center;
+      color: var(--text-muted);
       font-size: 0.85rem;
-      letter-spacing: 1px;
     }
 
-    .btn-buy:hover {
-      transform: scale(1.05);
-      background: var(--gnr-gold);
-      color: #000;
-      box-shadow: 0 0 20px var(--gnr-gold);
-      border-color: var(--gnr-gold);
+    footer p {
+      margin-bottom: 10px;
+      font-family: 'Special Elite', cursive;
     }
 
-    .badge-container {
-      display: flex;
-      justify-content: flex-start;
+    .footer-links a {
+      color: var(--faded-yellow);
+      text-decoration: none;
+      margin: 0 10px;
     }
 
-    .card-etiqueta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 6px 14px;
-      background: rgba(0, 255, 135, 0.12);
-      border: 1.5px solid var(--green-matrix);
-      color: var(--green-matrix);
-      border-radius: 4px;
-      font-weight: 800;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      box-shadow: 0 0 12px rgba(0, 255, 135, 0.3);
-      transition: all 0.3s ease;
-    }
-
-    .card-etiqueta::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      background-color: var(--green-matrix);
-      border-radius: 50%;
-      box-shadow: 0 0 8px var(--green-matrix);
-    }
-
-    .card-etiqueta:hover {
-      background: var(--green-matrix);
-      color: #000;
-      box-shadow: 0 0 20px var(--green-matrix);
-      cursor: pointer;
+    .footer-links a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
   <header class="navbar">
-    <div class="logo">GUNS<span>GUITARS</span></div>
+    <div class="logo">SEATTLE<span>NOISE</span></div>
     <nav>
-      <a href="#">Modelos</a>
-      <a href="#">Pedales</a>
+      <a href="#" class="active">Inicio</a>
+      <a href="#">Guitarras</a>
+      <a href="#">Pedales Fuzz</a>
       <a href="#">Amplis</a>
-      <a href="#" class="btn-nav">VIP Pass</a>
     </nav>
   </header>
 
-  <section class="hero">
-    <span class="badge-hero">Paradise City Tour</span>
-    <h1>Welcome to the Jungle of Tone</h1>
-    <p>Guitarras con alma rockera, distorsion pura y acabados legendarios. Diseñadas para romper cualquier escenario.</p>
+  <section class="hero-banner">
+    <div class="tape-badge">Sub Pop Era - Guitarras Usadas & Modificadas</div>
+    <h1>Distorsion, Garage & Actitud</h1>
+    <p>Instrumentos desgastados, modificados en garajes y listos para acoplar. El autentico sonido sucio de Seattle directo a tu amplificador.</p>
+    <div class="hero-actions">
+      <a href="#catalogo" class="btn-grunge">Ver Catalogo</a>
+      <a href="#" class="btn-grunge btn-secondary">Garage Sale</a>
+    </div>
   </section>
+
+  <h2 class="section-title" id="catalogo">Modelos Underground</h2>
 
   <main class="catalog">
 
     <article class="guitar-card">
       <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=80&w=800&auto=format&fit=crop" alt="Guitarra Slash Edition">
-        <span class="tag-category">Appetite Custom</span>
+        <img src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=80&w=800&auto=format&fit=crop" alt="Jaguar Pawn Shop">
+        <span class="tag-category">Offset 1993</span>
       </div>
       <div class="card-content">
-        <h3>Slash Gold Burst</h3>
-        <p class="description">Mástil de caoba maciza, pastillas Humbucker de salida alta y un tono cálido legendario.</p>
+        <h3>Jaguar Grunge '93</h3>
+        <p class="description">Acabado desgastado natural, pastillas Humbucker de alta ganancia y switches modificados a mano.</p>
+        <div class="badge-condition">Estado: Relic Natural</div>
         <div class="card-footer">
-          <span class="price">$2,100 USD</span>
-          <button class="btn-buy">Rockear</button>
-        </div>
-        <div class="badge-container">
-          <span class="card-etiqueta">Edicion Leyenda</span>
+          <span class="price">$850 USD</span>
+          <button class="btn-grunge">Comprar</button>
         </div>
       </div>
     </article>
 
     <article class="guitar-card">
       <div class="card-image">
-        <img src="https://images.unsplash.com/photo-1550985616-10810253b84d?q=80&w=800&auto=format&fit=crop" alt="Guitarra Nightrain">
-        <span class="tag-category">Custom Shop</span>
+        <img src="https://images.unsplash.com/photo-1550985616-10810253b84d?q=80&w=800&auto=format&fit=crop" alt="Mustang Sonic Red">
+        <span class="tag-category">Mustang</span>
       </div>
       <div class="card-content">
-        <h3>Nightrain Crimson</h3>
-        <p class="description">Cuerpo barnizado en rojo profundo, herrajes de niquel desgastado y puente Floyd Rose.</p>
+        <h3>Mustang Sonic Red</h3>
+        <p class="description">Cuerpo liviano, escala corta ideal para ritmos agresivos y puente fijo bloqueado para mayor afinacion.</p>
+        <div class="badge-condition">Estado: Usado en Tour</div>
         <div class="card-footer">
-          <span class="price">$1,950 USD</span>
-          <button class="btn-buy">Rockear</button>
+          <span class="price">$920 USD</span>
+          <button class="btn-grunge">Comprar</button>
         </div>
-        <div class="badge-container">
-          <span class="card-etiqueta">En Stock</span>
+      </div>
+    </article>
+
+    <article class="guitar-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1516924962500-2b4b3b99ea02?q=80&w=800&auto=format&fit=crop" alt="Stratocaster Vandal">
+        <span class="tag-category">Strat Custom</span>
+      </div>
+      <div class="card-content">
+        <h3>Strat Vandal 1991</h3>
+        <p class="description">Cuerpo con pegatinas vintage, pastilla del puente reemplazada por una Seymour Duncan destruye-amplis.</p>
+        <div class="badge-condition">Estado: Modificada</div>
+        <div class="card-footer">
+          <span class="price">$780 USD</span>
+          <button class="btn-grunge">Comprar</button>
         </div>
       </div>
     </article>
 
   </main>
+
+  <footer>
+    <p>SEATTLE NOISE GUITARS - ESTABLISHED IN 1991</p>
+    <div class="footer-links">
+      <a href="#">Garantia Dirt</a> | <a href="#">Envios</a> | <a href="#">Contacto</a>
+    </div>
+  </footer>
 
 </body>
 </html>
