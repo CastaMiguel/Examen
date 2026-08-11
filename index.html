@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guns N Guitars - Paradise City Store</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Rye&family=Montserrat:wght@500;700;900&display=swap');
+
+    :root {
+      --gnr-gold: #ffcc00;
+      --gnr-gold-glow: rgba(255, 204, 0, 0.4);
+      --gnr-red: #e60026;
+      --gnr-red-glow: rgba(230, 0, 38, 0.5);
+      --gnr-dark: #0b0a0d;
+      --gnr-card: rgba(22, 19, 28, 0.9);
+      --green-matrix: #00ff87;
+      --text-light: #f3f4f6;
+      --text-muted: #a1a1aa;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: var(--gnr-dark);
+      background-image: 
+        radial-gradient(circle at 50% 20%, rgba(230, 0, 38, 0.15) 0%, transparent 60%),
+        radial-gradient(circle at 50% 80%, rgba(255, 204, 0, 0.08) 0%, transparent 50%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 20px;
+      color: var(--text-light);
+      font-family: 'Montserrat', sans-serif;
+      min-height: 100vh;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 8%;
+      background: rgba(11, 10, 13, 0.95);
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid var(--gnr-gold);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+    }
+
+    .logo {
+      font-family: 'Rye', serif;
+      font-size: 1.8rem;
+      color: var(--gnr-gold);
+      text-shadow: 0 0 10px var(--gnr-gold-glow), 2px 2px 0px #000;
+      letter-spacing: 1px;
+    }
+
+    .logo span {
+      color: var(--gnr-red);
+      text-shadow: 0 0 10px var(--gnr-red-glow), 2px 2px 0px #000;
+    }
+
+    nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: var(--gnr-gold);
+    }
+
+    .btn-nav {
+      border: 1.5px solid var(--gnr-gold);
+      padding: 8px 18px;
+      border-radius: 4px;
+      color: var(--gnr-gold) !important;
+      box-shadow: 0 0 10px var(--gnr-gold-glow);
+      transition: all 0.3s ease !important;
+      background: rgba(255, 204, 0, 0.05);
+    }
+
+    .btn-nav:hover {
+      background: var(--gnr-gold);
+      color: #000 !important;
+      box-shadow: 0 0 20px var(--gnr-gold);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 60px 20px 30px;
+    }
+
+    .badge-hero {
+      background: rgba(0, 255, 135, 0.1);
+      border: 1px solid var(--green-matrix);
+      color: var(--green-matrix);
+      padding: 6px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 0 12px rgba(0, 255, 135, 0.3);
+    }
+
+    .hero h1 {
+      font-family: 'Rye', serif;
+      font-size: 3.2rem;
+      margin: 25px 0 15px;
+      color: #ffffff;
+      text-shadow: 
+        0 0 20px var(--gnr-red-glow),
+        3px 3px 0px #000;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      color: var(--text-muted);
+      max-width: 580px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      font-weight: 500;
+    }
+
+    .catalog {
+      display: flex;
+      justify-content: center;
+      gap: 35px;
+      flex-wrap: wrap;
+      padding: 40px 20px 80px;
+    }
+
+    .guitar-card {
+      position: relative;
+      background: var(--gnr-card);
+      border: 1px solid rgba(255, 204, 0, 0.3);
+      border-radius: 12px;
+      width: 330px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.9);
+    }
+
+    .guitar-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gnr-gold);
+      box-shadow: 
+        0 0 25px var(--gnr-gold-glow),
+        0 20px 40px rgba(0, 0, 0, 0.95);
+    }
+
+    .card-image {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+      border-bottom: 2px solid var(--gnr-red);
+    }
+
+    .card-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+      filter: contrast(1.05) brightness(0.9);
+    }
+
+    .guitar-card:hover .card-image img {
+      transform: scale(1.08);
+      filter: contrast(1.1) brightness(1);
+    }
+
+    .tag-category {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: rgba(11, 10, 13, 0.85);
+      border: 1px solid var(--gnr-gold);
+      color: var(--gnr-gold);
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card-content h3 {
+      font-family: 'Rye', serif;
+      font-size: 1.6rem;
+      color: #fff;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .description {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      font-family: 'Rye', serif;
+      font-size: 1.5rem;
+      color: var(--gnr-gold);
+      text-shadow: 0 0 10px var(--gnr-gold-glow);
+    }
+
+    .btn-buy {
+      background: linear-gradient(135deg, var(--gnr-red), #99001a);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      font-weight: 800;
+      padding: 10px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 12px var(--gnr-red-glow);
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+    }
+
+    .btn-buy:hover {
+      transform: scale(1.05);
+      background: var(--gnr-gold);
+      color: #000;
+      box-shadow: 0 0 20px var(--gnr-gold);
+      border-color: var(--gnr-gold);
+    }
+
+    .badge-container {
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    .card-etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(0, 255, 135, 0.12);
+      border: 1.5px solid var(--green-matrix);
+      color: var(--green-matrix);
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      box-shadow: 0 0 12px rgba(0, 255, 135, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .card-etiqueta::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background-color: var(--green-matrix);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--green-matrix);
+    }
+
+    .card-etiqueta:hover {
+      background: var(--green-matrix);
+      color: #000;
+      box-shadow: 0 0 20px var(--green-matrix);
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="logo">GUNS<span>GUITARS</span></div>
+    <nav>
+      <a href="#">Modelos</a>
+      <a href="#">Pedales</a>
+      <a href="#">Amplis</a>
+      <a href="#" class="btn-nav">VIP Pass</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <span class="badge-hero">Paradise City Tour</span>
+    <h1>Welcome to the Jungle of Tone</h1>
+    <p>Guitarras con alma rockera, distorsion pura y acabados legendarios. Diseñadas para romper cualquier escenario.</p>
+  </section>
+
+  <main class="catalog">
+
+    <article class="guitar-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1564186763535-ebb21ef5277f?q=80&w=800&auto=format&fit=crop" alt="Guitarra Slash Edition">
+        <span class="tag-category">Appetite Custom</span>
+      </div>
+      <div class="card-content">
+        <h3>Slash Gold Burst</h3>
+        <p class="description">Mástil de caoba maciza, pastillas Humbucker de salida alta y un tono cálido legendario.</p>
+        <div class="card-footer">
+          <span class="price">$2,100 USD</span>
+          <button class="btn-buy">Rockear</button>
+        </div>
+        <div class="badge-container">
+          <span class="card-etiqueta">Edicion Leyenda</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="guitar-card">
+      <div class="card-image">
+        <img src="https://images.unsplash.com/photo-1550985616-10810253b84d?q=80&w=800&auto=format&fit=crop" alt="Guitarra Nightrain">
+        <span class="tag-category">Custom Shop</span>
+      </div>
+      <div class="card-content">
+        <h3>Nightrain Crimson</h3>
+        <p class="description">Cuerpo barnizado en rojo profundo, herrajes de niquel desgastado y puente Floyd Rose.</p>
+        <div class="card-footer">
+          <span class="price">$1,950 USD</span>
+          <button class="btn-buy">Rockear</button>
+        </div>
+        <div class="badge-container">
+          <span class="card-etiqueta">En Stock</span>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+</body>
+</html>
